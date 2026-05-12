@@ -1,0 +1,76 @@
+html:<tatle>标题<tatle>
+
+<a href=""> xx <a>//网页连接，超链接
+
+<img src="" >//图片
+
+<h12345> 头部标题
+
+<style>//规定样式
+<style> 
+      #id名称{font-family//字体
+font-size://大小
+text-align//文档格式
+color//颜色}
+      .class名称{一样可以设置}
+<style> 
+
+id=""//唯一性  class=""//可以多个存在
+<h1 id="one">shiah ij<h1>
+<h2 id="two">two two<h1>
+<h3 class="txt">33<h3>
+<h4 class="txt">44<h4>
+<h5 class="txt">55<h5>
+
+<table border="2">//外框两层
+<tr>//1行
+  <td> </td>//属性
+  <td> </td>
+  <td> </td>
+  <td> </td>
+<tr>//2行
+  <td> </td>
+  <td> </td>
+  <td> </td>
+  <td> </td>
+<tr>//三行
+  <td> </td>
+  <td> </td>
+  <td> </td>
+  <td> </td>
+</table>
+
+<ol>//有序表（添加序号）
+    <li>xx</li>//内容
+    <li>xx</li>
+    <li>xx</li>
+    <li>xx</li>
+    <li>xx</li>
+</ol>
+<ul>//不加序号
+
+<div style="background-color: orange;width: 300px;height: 300px">我是第一个区块</div>//区块
+
+<form>//输入
+    账号：<input type="text"><br>//输入类型text    br跨行
+    密码：<input type="password"><br>//输入类型password
+<form>
+
+<hr>//分割线
+
+<input type="radio" name="">//单选框
+
+<input type="checkbox" name="" value="">//多选框
+<input type="checkbox" name="" value="">
+
+ <select name="">//下拉框
+        <optgroup label="">//首标题
+            <option></option>//内容
+        </optgroup>
+        <optgroup label="">
+            <option></option>
+        </optgroup>
+    </select>
+ <input type="submit"><input type="reset">//提交和重置
+
+
