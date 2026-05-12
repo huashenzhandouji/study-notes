@@ -12,8 +12,3 @@ txt文件解压：gunzip 1.txt.gz bunzip 1.txt.bz2
            tar jxvf 1.tar.bz2
            tar zxvf 1.tar.gz（zxvf和jxvf只能解压相同来源的压缩包）
 文件夹删除：rm -f 1.zip（压缩后有后缀，用rm -f删除）
-           
-          
-            
-            
-
