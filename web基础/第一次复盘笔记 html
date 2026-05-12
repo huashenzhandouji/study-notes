@@ -51,11 +51,12 @@ id=""//唯一性  class=""//可以多个存在
 <div style="background-color: orange;width: 300px;height: 300px">我是第一个区块</div>//区块
 
 <form>//输入
-    账号：<input type="text"><br>//输入类型text    br跨行
-    密码：<input type="password"><br>//输入类型password
+    账号：<input type="text">//输入类型text   
+    密码：<input type="password">//输入类型password
 <form>
 
 <hr>//分割线
+<br>//跨行
 
 <input type="radio" name="">//单选框
 
