@@ -1,0 +1,4 @@
+CSS:
+ <link rel="stylesheet" href=".css">//定义stylesheet类型，链接是创建的css文件；外联样式
+   
+   
