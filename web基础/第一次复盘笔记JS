@@ -1,0 +1,8 @@
+JS:
+<button onclick="alert(字符串或者"xx")">xxx</button>   //button按钮，alert弹窗可以直接在头部中间，最后写，顺序播放
+
+<script >//script JS通道；
+    const str1 = "JS牛福"
+    document.write(str1+"<br>")//document.write(str+"<br>")书写   +"<br>"换行
+    document.write("<h5>js添加的内容</h5>")//一个效果
+</script>
