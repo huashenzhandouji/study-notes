@@ -1,8 +1,10 @@
+//txt
 txt创建：touch 1.txt
 txt删除：rm -f 1.txt
 txt文件压缩：gzip 1.txt  bzip2 1.txt
 txt文件解压：gunzip 1.txt.gz bunzip 1.txt.bz2
 
+//文件夹
 文件夹创建：mkdir 1
 文件夹删除：rmdir 1
 文件夹压缩：rar a 1.rar 1(注：rar下载需要root权限  su -root   sudo apt install rar(下载rar)，which rar可检查路径名字）
