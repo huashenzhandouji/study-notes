@@ -6,8 +6,7 @@ html:<tatle>标题<tatle>
 
 <h12345> 头部标题
 
-<style>//规定样式
-<style> 
+<style>//规定样式，内联样式
       #id名称{font-family//字体
 font-size://大小
 text-align//文档格式
