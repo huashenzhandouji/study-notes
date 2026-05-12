@@ -9,8 +9,10 @@ txt文件解压：gunzip 1.txt.gz bunzip 1.txt.bz2
 文件夹删除：rmdir 1
 文件夹压缩：rar a 1.rar 1(注：rar下载需要root权限  su -root   sudo apt install rar(下载rar)，which rar可检查路径名字）
             tar jcvf 1.tar.bz2 1(bz2压缩)
-            tar zcvf 1.zip.gz 1(gz压缩)
-文件夹解压:rar x 1.rar
+            tar zcvf 1.tar.gz 1(gz压缩)
+文件夹解压:unrar x 1.rar
            tar jxvf 1.tar.bz2
            tar zxvf 1.tar.gz（zxvf和jxvf只能解压相同来源的压缩包）
-文件夹删除：rm -f 1.zip（压缩后有后缀，用rm -f删除）
+文件压缩包删除：rm -f 1.tar.gz
+                rm -f 1.tar.bz2
+                rm -f 1.rar（压缩后有后缀，用rm -f删除）
