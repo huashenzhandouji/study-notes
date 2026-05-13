@@ -1,5 +1,5 @@
 CSS:
  <link rel="stylesheet" href=".css">//定义stylesheet类型，链接是创建的css文件；外联样式
- <p class="ps">xx</p>//使用方法
+ <p class="ps">xx</p>//使用方法   <p>段落标签
 .ps{}//css文件写法
    
