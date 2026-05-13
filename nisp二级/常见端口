@@ -1,26 +1,26 @@
-## 1. 基础服务
+ 1. 基础服务
 - 21  → FTP 文件传输
 - 22  → SSH 远程连接
 - 23  → Telnet 明文远程登录
 - 25  → SMTP 邮件发送
 - 53  → DNS 域名解析
 
-## 2. Web服务
+#2. Web服务
 - 80   → HTTP
 - 443  → HTTPS
 - 8080 → Tomcat/代理/备用Web
 
-## 3. 数据库
+ 3. 数据库
 - 3306  → MySQL
 - 1433  → SQL Server
 - 1521  → Oracle
 - 6379  → Redis
 - 27017 → MongoDB
 
-## 4. 局域网&共享
+4. 局域网&共享
 - 139 → NetBIOS
 - 445 → SMB 共享（内网渗透重点）
 
-## 5. 远程控制
+ 5. 远程控制
 - 3389 → Windows 远程桌面RDP
 - 5900 → VNC
