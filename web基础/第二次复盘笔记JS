@@ -1,0 +1,63 @@
+//obgect
+    var js_1={
+         name:"tony",
+         age:20,
+         love:["python","js","php"],
+    }
+document.write(js_1.name+"<br>")
+
+  var arr_date =new Array(["python","js","php"])//数组格式
+  document.write(arr_date+"<br>")
+
+ //confirm语句,和alert弹窗一样返回
+    var n1=window.confirm("你选择确定还是取消")
+    if(n1==true){
+         alert("点击了确定按钮");
+    }else{
+         alert("点击了取消按钮");
+    }
+
+    //console.log 浏览器的控制台输出信息，通常用console来调试程序,页面检查可看到
+    var n2=["12","32","php"]
+    console.log(n2)
+
+    // innerHTML 修改元素
+   <h5 id="h"> xxxx<h5>
+     var demo=document.getElementById("h")
+     demo.innerHTML="<h1>123456</h1>"
+
+//if语句,do while while for 语句
+    var i=5
+    if (i=10)
+    {
+        document.write("i小于5")
+           i++;
+    }
+    for(var b=10;b<=30;b++)
+    {
+         document.write("b小于30"+"<br>")
+    }
+    do
+    {
+        document.write("i小于20"+"<br>")
+        i++
+    }while(i<=20);
+
+    while(i<=25){
+         document.write("i小于25"+"<br>")
+        i++
+    }
+
+函数用法
+function fun_one(num1,num2)
+{
+    document.write(num2+num1+"<br>")          数字相加,字符串套用
+}
+fun_one(18,20)
+
+function fun_three(num1,num2)
+{
+    return num1+num2;
+}
+document.write(fun_three(12,20))             //返回,要看的话用document.write
+
