@@ -1,1 +1,38 @@
+-u root -p   进入数据库,密码输入
+
+create database 数据库名
+
+drop database 数据库名
+
+show databases  看数据库
+
+use 数据库名字
+
+create table 表名(
+多个表头加属性例如:
+        ID  INT auto_increment,
+        name varchar(),                               创建表
+        sex varchar(),
+        age int,
+ primary key (ID)
+ 最后不加逗号
+)DEFAULT CHARSET=utf8;
+
+desc 表名 ;                   查看表结构
+show tables;                 看当前数据库的表有哪些
+
+insert into 表名(name,sex,age) value("xx","xx","xx");                    增加表中的内容
+
+select *或者字段  from 表名;
+select   字段    from 表名 where name like"张_或者张%";                          查看表中的内容
+
+alert table 表名 drop 字段名;                  列
+delete from 表名 where 字段名=字段值            行
+truncate table 表名                            清空                        删除表中的内容
+drop table 表名;                               删除表
+
+alter table 表名 chage xx yy     将xx改为yy 
+alert table 表名 add xx 属性;     表中加入一个属性                           改变表中的一个属性
+
+
 
