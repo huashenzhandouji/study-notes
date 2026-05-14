@@ -5,4 +5,7 @@ JS:
     const str1 = "JS牛福"
     document.write(str1+"<br>")//document.write(str+"<br>")书写   +"<br>"换行
     document.write("<h5>js添加的内容</h5>")//一个效果
+
+
+alert("xx")     直接用,头部,身体,结束都可以用
 </script>
