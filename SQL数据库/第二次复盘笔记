@@ -1,0 +1,38 @@
+范围查询 
+  between... and ...       连续性查询
+select * table_one where age>18 and age<=20;
+                        between 18 and 20;
+ in...                   非连续性查询,单独查
+   select * table_one where id in(1,3)
+
+   updata 更新
+   updata table_one set phone=10086 where id=1 ;
+
+   判断
+    select * table_one where phone is null;
+
+   排序  order by asc升序    dasc降序;
+   select * table_one order by age asc ;
+
+   分页查询 limit (x,y)   从跳过x个符合条件的开始查询 ,得到y个符合条件的;
+   select * table_one where sex="男" limit (0,3)
+
+    聚合查询
+   select count(id) from 表名 
+   select sum (xx) from 表名
+
+    分组查询 group by  根据书名查询书名的价格总和    group cancat 根据性别查询性别的人有几个
+     select book_name,sum(book_price) from 表名 group by book_name;
+     select sex group cancat(name) from 表名 group by sex;
+
+
+     连接查询   内连接inner join 左连接 left join  右连接 right join;
+    select 表名.属性,表名.属性 from 表名 inner join 表名 on book.id=book2.id;(比如是作者和对应书内连接);
+
+
+
+
+
+
+     
+ 
