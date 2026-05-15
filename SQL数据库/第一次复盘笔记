@@ -1,4 +1,4 @@
--u root -p   进入数据库,密码输入
+-u 用户名 -p   进入数据库,密码输入
 
 create database 数据库名
 
