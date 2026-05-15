@@ -3,4 +3,5 @@
 ## 📂 目录结构
 - `/nisp/`：NISP二级考试笔记
 - `/kali/`：Kali Linux 实操与工具笔记
-- `/frontend/`：HTML/CSS/JS 前端学习
+- `/web前端/`：HTML/CSS/JS 前端学习
+- `/MYSQL/`：具体基础和进阶命令
