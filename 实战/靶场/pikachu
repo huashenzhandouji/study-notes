@@ -1,1 +1,11 @@
 路径localhost/pikachu/
+
+第一次登录要localhost/pikachu/install.php初始化数据库；
+
+SQL 注入：GET/POST/HTTP 头部注入、布尔盲注、宽字节注入
+XSS 跨站脚本：反射、存储、DOM、JS 过滤 XSS（可搭配 BeEF 劫持浏览器）
+暴力破解：普通爆破、验证码绕过（DVWA 没有这个场景）
+文件类漏洞：文件上传、文件包含、目录遍历、不安全文件下载
+执行类漏洞：远程命令执行 RCE、远程代码执行
+逻辑漏洞：越权访问、不安全 URL 重定向
+进阶漏洞：SSRF、XXE、PHP 反序列化、敏感信息泄露、CSRF 跨站伪造
