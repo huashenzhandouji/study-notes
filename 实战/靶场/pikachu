@@ -1,4 +1,4 @@
-路径localhost/pikachu/
+（搭建在apache上，80端口www路径）路径localhost/pikachu/
 
 第一次登录要localhost/pikachu/install.php初始化数据库；
 
