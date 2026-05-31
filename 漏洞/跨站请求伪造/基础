@@ -5,4 +5,5 @@
 src='http://localhost/pika/vul/csrf/csrfget/csrf_get_edit.php?
 sex=gg&phonenum=1111&add=11111&email=111111&submit=submit'>
 </script>
-BP相关工具选项生成CSRF；
+
+4.BP相关工具选项生成CSRF；
