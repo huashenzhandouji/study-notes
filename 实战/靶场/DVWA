@@ -1,0 +1,8 @@
+开源漏洞练习靶场，专门用来练 Web 漏洞：XSS、SQL 注入、文件上传、命令执行、CSRF 
+
+可以用：
+nmap：看 DVWA 开了哪些端口、是什么 Web 服务
+masscan：快速找到内网所有靶机
+nc：测试端口是否通、手动发包、反弹 shell
+hydra：破解 DVWA 登录密码（Brute Force 模块）
+beef：XSS 拿浏览器权限
