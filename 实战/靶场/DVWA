@@ -1,3 +1,5 @@
+127.0.0.1/dvwa 账户：admin， 密码：password;
+
 开源漏洞练习靶场，专门用来练 Web 漏洞：XSS、SQL 注入、文件上传、命令执行、CSRF 
 
 可以用：
