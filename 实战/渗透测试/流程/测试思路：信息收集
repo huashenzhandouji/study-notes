@@ -1,0 +1,46 @@
+                                              无CDN思路
+无 CDN：用户直接访问源服务器获取资源
+有 CDN：用户访问就近缓存节点（有藏ip的作用）；
+
+流程思路：
+一：CMS鉴别：BP插件/御剑7k直接扫描/CMS识别平台/静态资源路径，头部meta，页面源代码，有特别指纹
+二：源码获取技术：
+1.安装包/备份文件泄露/把备份文件留在了服务器当中
+  访问/www.rar /www.zip /web.rar
+  访问/install.php.bak /config.php.bak /data/config.php
+  御剑直接扫
+2.目标有文件包含漏洞；
+3.弱口令/后台GETshell后下载源码
+  (1)后台文件管理功能
+  (2)模板文件写木马后用菜刀/蚁剑连接
+  (3)上传漏洞：上传压缩包或php文件在解压执行后获得源码
+4.公开泄露，第三方平台；
+三：架构信息获取：
+(一):1.web: apache/ngins/iis/tomcat
+     2.脚本：php/js/asp/aspx/jsp/python
+     3.数据库:mysql/sql sever/oracle/redis
+     4.操作系统：windows/linux/centos/ubuntu/windows sever
+     5.中间件:tomcat/jboss/weblogic/nginx/反向代理
+     6.防护组件：CDN/WAP/负载均衡/云服务器
+     7.部署架构：单机部署/反向代理/集群/前后端分离
+ (二)步骤:
+    一阶段：
+       1.手动看http数据包;     基础架构识别
+       2.(1).php 大概率是 mysql
+         (2).asp/.aspx 大概率是windows+iis+sql sever
+         (3).jsp/.do/.action 大概率是 java+tomcat
+         (4).py/.flask 大概率是 python
+       3.通过看错误路径构造看：
+         (1)xxx.com/123456   访问不存在的路径
+         (2)xxx.com/index.php?id=''构造非法参数 
+        4.操作系统判断：
+         (1)目录：uer/home/var/www/ ->linux
+                  c:\windows\   d:\www\ ->windows
+         (2)大小写： 网站域名中linux严格分大小写
+                    windows部分大小写
+         (3)ping ttl ≈128 windows   ≈64 linux
+         (4)nmap -o ip 扫端口 445多为windows 22多为 linux
+         (5)
+     二阶段：
+
+
