@@ -92,6 +92,7 @@
 五：WAF防护分析[web应用防护系统]（软件/硬件）
    wafw00f(waf扫描工具)：路径 python main.py
    扫描方式：    python main.py http://
+                人为看数据包
 
 
 
