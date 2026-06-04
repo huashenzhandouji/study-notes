@@ -1,0 +1,20 @@
+类序列化中序列化和反序列化必须要定义class 不能跟无类序列化一样，否则会报错；
+<?php
+ class person {
+   public $name='xuzhu';
+   public $age=18;
+}
+$p=new person();
+$obj=serialize($p);
+print_r($obj);
+?>
+
+public(公共的)在本类内部，外部，子类，都可以访问；
+protect（受保护的）只有本类或者子类或者父类中可以访问；
+private（私人的）只有本类可以使用
+
+private 属性序列化的格式是%00 类名（person）%00成员名（age）       %00占一个字节长度
+protect               %00*%00成员名
+
+protect    s8:"(%00)*(%00)hobby"
+private    s:11:"(%00)person(%00)age"
