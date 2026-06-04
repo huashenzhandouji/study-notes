@@ -1,0 +1,24 @@
+没有class的序列化：
+题目获取flag:
+<?php
+ error_reporting(0);
+ include"flag.php";
+ $KEY="xuzhu";
+ $str=$_GET['str'];//            $str=$KEY的序列化
+ if (unserialize($str)===$KET)
+{
+   echo "$flag","<br>";
+}
+show source(_FTLE_);
+?>
+
+flag代码：
+<?php
+ $flag='this is flag';
+?>
+
+序列化"xuzhu": (或者使用在线解析工具)
+<?php
+ echo serialize('xuzhu');
+?>
+
