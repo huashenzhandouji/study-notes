@@ -1,0 +1,12 @@
+1.print 没括号 基本是python 2;
+2.反弹shell开对应端口才能收到；
+3.网站打不看看是不是真的打不开还是说被waf拦截了（开代理v2rayn）；
+4.搜索引擎常用命令：
+    site: site:xxx.com site:gov.cn  搜政府站点 site:edu.cn  搜教育网
+    inurl: 关键词 网址包含指定字符  inurl:login inurl:admin inurl:php?id=    inurl:upload
+    intext: 关键词 网页正文包含内容 intext:数据库配置 intext:root password intext:phpinfo
+    intitle: 关键词 网页标题含关键词 intitle:后台管理 intitle:登录 intitle:index of
+    filetype: 后缀 搜索指定格式文件 filetype:bak site:xxx.com #数据库备份    filetype:zip site:xxx.com #源码压缩包     filetype:sql site:xxx.com
+          filetype:rar site:xxx.com      filetype:conf site:xxx.com #配置文件     filetype:env site:xxx.com  #环境配置（数据库账号）
+5. .net类似域名，另一个功能的域名
+6.
