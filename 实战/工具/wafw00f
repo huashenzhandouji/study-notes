@@ -1,0 +1,34 @@
+一、安装（Kali 自带）
+apt install wafw00f
+
+二、核心参数
+参数	作用
+-l	列出支持识别的全部 WAF（Cloudflare、阿里云、F5、ModSecurity、宝塔等）
+-v	详细扫描，-vv极致详情
+-a	全量检测所有 WAF，不命中一个就退出
+-r	禁止跟随 301/302 重定向
+-p	挂代理（对接 burp：-p http://127.0.0.1:8080）
+-o  1.txt	结果导出文件（csv/json/txt）
+
+三、实战常用命令
+#基础单站点扫描
+wafw00f https://xxx.com
+
+#详细探测全部WAF
+wafw00f -av https://xxx.com
+
+#只单独测试Cloudflare
+wafw00f -t Cloudflare https://xxx.com
+
+#批量扫url.txt里所有网站
+wafw00f -i url.txt -o result.json
+
+四、常见探测结果
+Cloudflare：国外云 WAF，直接 SQL 注入基本挂
+阿里云 / 腾讯云 WAF：国内云防护，普通 payload 大概率拦截
+ModSecurity：开源 nginx/apache waf，部分规则可绕过
+没有 WAF detected：无防护，可直接上 sqlmap 注入
+
+五、原理
+先发正常请求看响应头→再发恶意注入类畸形数据包→根据返回码 / 页面拦截提示识别 WAF 厂商
+
