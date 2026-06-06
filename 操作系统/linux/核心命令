@@ -1,0 +1,9 @@
+linux核心命令
+u:user
+g:group
+o:other
+读：r
+写：w
+执行：x
+无相应权限：-
+文件下载：chmod u+rw 1.txt
