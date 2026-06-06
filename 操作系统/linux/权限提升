@@ -15,7 +15,7 @@
     uname -a
 
 二.linux-web端点：
-  1.开启kali-apache
+  1.开启 Kali Apache 服务
       默认有: apache 80(http)
       开启apache  /etc/initd/apache2 start
       查看运行状态 server apache2 status
@@ -71,10 +71,10 @@
   ./dcow -s
   whoami
 
-三、靶场实验收尾规范（好习惯，贴近正规渗透收尾）
+五、靶场实验收尾规范（好习惯，贴近正规渗透收尾）
 实验结束删除靶机 /tmp 下 dcow、dirty.cpp 文件，清理上传恶意文件；
 Kali 关闭 apache 服务：systemctl stop apache2；
-不留任何后门、新增用户，恢复靶机原始状态。
+删除新增的后门用户及家目录，不留任何后门,恢复靶机原始状态。
   
    
 
