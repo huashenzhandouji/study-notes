@@ -1,0 +1,7 @@
+windows核心命令
+查看用户：net user
+创建用户：net user troyber/add
+设置密码：net user troyber 123456
+设置管理员：net localgroup administrator troyber
+激活：net user troyber/active
+删除：net user troyber/delete
