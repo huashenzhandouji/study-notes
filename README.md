@@ -1,9 +1,9 @@
 # 学习笔记仓库 📚
-记录方向：NISP二级 / Kali Linux / HTML+CSS+JS 前端/MYSQIL /漏洞/工具/靶场
+记录方向：NISP二级 / web基础/ 操作系统/数据库/漏洞基础/工具/靶场
 ## 📂 目录结构
-- `/nisp/`：NISP二级考试
-- `/kali/`：Kali Linux 实操与工具
+- `/nisp二级/`：NISP二级基础
+- `/操作系统/`：Linux windows基础
 - `/web前端/`：HTML/CSS/JS 前端学习
-- `/MYSQL/`：具体基础和进阶命令
+- `/数据库/`：具体基础
 - `/漏洞/`：基础漏洞知识
 - `/实战/`：关于实战中的工具和测试靶场
