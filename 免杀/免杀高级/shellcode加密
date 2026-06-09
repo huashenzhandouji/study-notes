@@ -1,0 +1,15 @@
+对木马的源代码进行,也就是shellcode进行加密和修改,实现免杀;
+1.shellcode是什么:16进制的机器码;
+  作用:这段代码在执行之后可以实现对服务器的控制;
+2.生成:
+  cs  有效载荷,payload生成器    是执行不了的;
+  msf
+3.vs执行:
+ (1)把代码放入c.c文件中
+ (2)生成解决器   retease  x64;
+ (3)原生态.c文件由三种生成方式;
+4.xor算法加密:
+ (1)cs生成payload.bin(raw格式);
+ (2)python xor.py -s payload.bin -d payload.c -n 10 -r out.bin
+ (3)生成了payload.c文件
+ (4)利用vs
